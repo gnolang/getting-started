@@ -26,3 +26,7 @@ func Set(newMsg string) {
 func Get() string {
 	return message
 }
+
+// Try it yourself! With gnodev (make dev) running, you can modify this file
+// and see your changes instantly in the browser. For example, try changing
+// the initial message above or adding new functions!
