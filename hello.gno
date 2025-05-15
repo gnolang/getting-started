@@ -17,12 +17,11 @@ Try it out with gnokey:
 	`
 }
 
-// Set updates the message global variable stored in the realm's state
 func Set(newMsg string) {
+	// update the 'message' global variable stored in the realm's state.
 	message = newMsg
 }
 
-// Get retrieves the stored message
 func Get() string {
 	return message
 }
