@@ -1,6 +1,7 @@
 .PHONY: install dev test
 
 install:
+	@# TODO: replace these complex commands with a oneline installer.
 	@if ! command -v go &> /dev/null; then \
 		echo "Go is not installed. Please install Go from https://go.dev/doc/install"; \
 		exit 1; \
