@@ -11,18 +11,18 @@ check out the "Next Steps" section below for links to more advanced resources.
 
 1. Clone this repository:
 
-    git clone https://github.com/gnolang/getting-started.git
-    cd getting-started
+        git clone https://github.com/gnolang/getting-started.git
+        cd getting-started
 
 2. Install dependencies:
 
-    make install
+        make install
 
 This will check if Go is installed and install the required Gno tools.
 
 3. Start the development server:
 
-    make dev
+        make dev
 
 4. Open your browser and visit https://localhost:8888
 
