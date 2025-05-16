@@ -18,6 +18,8 @@ Try it out with gnokey:
 }
 
 func Set(newMsg string) {
+	crossing()
+	
 	// update the 'message' global variable stored in the realm's state.
 	message = newMsg
 }
