@@ -1,0 +1,2 @@
+module = "gno.land/r/example/hello"
+gno = "0.9"
