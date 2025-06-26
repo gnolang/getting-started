@@ -11,7 +11,7 @@ func TestSetAndGet(t *testing.T) {
 	}
 
 	// Test setting a new message
-	Set("Hello, Test!")
+	Set(cross, "Hello, Test!")
 	if got := Get(); got != "Hello, Test!" {
 		t.Errorf("Expected 'Hello, Test!', got %s", got)
 	}
