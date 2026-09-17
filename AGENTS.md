@@ -18,7 +18,6 @@ make dev      # local chain + web UI on http://localhost:8888, reloads on save
 make test     # gno test .
 make lint     # gno lint .
 make fmt      # gno fmt -w .
-make deploy   # publish on-chain (needs KEY, REMOTE, CHAINID — see the Makefile)
 ```
 
 `make test lint` is the bar for any change. CI runs exactly those two targets
@@ -46,6 +45,5 @@ Close enough that Go habits compile in your head and fail on the chain:
 - Conventional single-line commits: `feat: …`, `fix: …`, `chore: …`.
 - No AI co-author trailers.
 - Don't add folders, CI jobs, or dependencies. Simplicity is the feature; if
-  something needs more machinery, it belongs in
-  [gnolang/repo-template](https://github.com/gnolang/repo-template) or
+  something needs more machinery, it belongs in a bigger repo such as
   [moul/gno-contracts](https://github.com/moul/gno-contracts), not here.

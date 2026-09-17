@@ -3,7 +3,7 @@
 GNO ?= gno
 
 .DEFAULT_GOAL := help
-.PHONY: help install dev test lint fmt deploy
+.PHONY: help install dev test lint fmt
 
 help: ## list the available targets
 	@awk 'BEGIN{FS=":.*?## "} /^[a-zA-Z_-]+:.*?## /{printf "  %-8s %s\n",$$1,$$2}' $(MAKEFILE_LIST)
@@ -26,24 +26,3 @@ lint: ## catch what only the chain would otherwise catch
 
 fmt: ## format every .gno file in place
 	$(GNO) fmt -w .
-
-# Publishing on-chain needs three things:
-#   1. a key with funds — `gnokey add mykey`, then a testnet faucet
-#      (https://faucet.gno.land); mainnet has none, it costs real GNOT.
-#   2. a namespace you control — set `module` in gnomod.toml to
-#      gno.land/r/<your-address>/hello. Your own address always works and
-#      needs no registration; a short name has to be registered first.
-#   3. the RPC endpoint + chain id of the network you are targeting, from
-#      https://docs.gno.land/resources/gnoland-networks
-#      (mainnet is https://rpc.gno.land:443, chain id gnoland-1).
-PKGPATH ?= $(shell sed -n 's/^module *= *"\(.*\)"/\1/p' gnomod.toml)
-
-deploy: ## publish on-chain: make deploy KEY=<name> REMOTE=<rpc-url> CHAINID=<id>
-	@if [ -z "$(KEY)" ] || [ -z "$(REMOTE)" ] || [ -z "$(CHAINID)" ]; then \
-	  echo 'usage: make deploy KEY=<keyname> REMOTE=<rpc-url> CHAINID=<chain-id>'; \
-	  echo 'pick a network: https://docs.gno.land/resources/gnoland-networks'; \
-	  exit 1; \
-	fi
-	gnokey maketx addpkg -pkgpath "$(PKGPATH)" -pkgdir . \
-	  -gas-fee 1000000ugnot -gas-wanted 20000000 \
-	  -broadcast -remote "$(REMOTE)" -chainid "$(CHAINID)" "$(KEY)"

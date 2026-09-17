@@ -57,36 +57,21 @@ call — that's how Gno marks a "crossing" call into a realm), and one that call
 
 ## Deploying it
 
-`gnodev` runs a throwaway local chain. To put your realm on a real network you
-need a key, a namespace, and a network:
-
-1. **A key with funds.**
-
-        gnokey add mykey
-
-   On a testnet, fund it from the [faucet](https://faucet.gno.land). Mainnet has
-   no faucet — it costs real GNOT.
-
-2. **A namespace you control.** Edit `module` in `gnomod.toml` to
-   `gno.land/r/<your-address>/hello`. Deploying under your own address always
-   works and needs no registration; a short name has to be registered first.
-
-3. **A network.** Look up its RPC endpoint and chain id in
-   [Gno networks](https://docs.gno.land/resources/gnoland-networks). Testnets
-   are renamed and replaced every few weeks, so check the page rather than
-   trusting a name you saw somewhere. [Mainnet](https://gno.land) has been live
-   since 12 September 2026 at `https://rpc.gno.land:443`, chain id `gnoland-1`.
-
-Then:
-
-        make deploy KEY=mykey REMOTE=<rpc-url> CHAINID=<chain-id>
+`gnodev` runs a throwaway local chain. To put your realm on a real network,
+point `module` in `gnomod.toml` at a path you control — `gno.land/r/<your-address>/hello`
+always works and needs no registration — then follow
+[Deploy to a shared network](https://docs.gno.land/builders/getting-started#deploy-to-a-shared-network),
+which covers the key, the faucet, the namespace and the `gnokey maketx addpkg`
+command for every network.
 
 ## Next Steps
 
 Ready to learn more? Check out these resources:
 
 - Gno Documentation: https://docs.gno.land
-- Gno Repository Template: https://github.com/gnolang/repo-template
+- The realms and packages that ship with the chain:
+  https://github.com/gnolang/gno/tree/master/examples — the standard library of
+  Gno, from `r/gnoland/home` to the `p/demo` packages everything else builds on.
 - Real-world packages and realms to read and copy from:
   https://github.com/moul/gno-contracts — 50+ versioned, self-contained
   contracts, each with a README and tests, continuously built against gno
