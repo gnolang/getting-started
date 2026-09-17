@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+# CI runs the same `make` targets a contributor runs locally, so the two can
+# never drift. The toolchain is built from gnolang/gno master: this repo is the
+# first thing a newcomer runs, so it has to work against what they install today.
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
           echo "$HOME/.gno/bin" >> "$GITHUB_PATH"
 
       - name: Test
-        run: gno test .
+        run: make test
 
       - name: Lint
-        run: gno lint .
+        run: make lint
