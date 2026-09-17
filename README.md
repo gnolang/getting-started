@@ -46,15 +46,13 @@ This repository contains a simple Gno realm with:
 `gnodev` runs a throwaway local chain. When you want your realm on a real
 network:
 
-- **[Pearl](https://pearl.testnets.gno.land/)** (`pearl-1`,
-  `https://rpc.pearl.testnets.gno.land:443`) is the current testnet — start
-  here, and get tokens from the [faucet](https://faucet.gno.land).
+- **A testnet** — start here. Testnets are renamed and replaced every few
+  weeks, so look up the current one and its RPC endpoint in
+  [Gno networks](https://docs.gno.land/resources/gnoland-networks), and get
+  tokens from the [faucet](https://faucet.gno.land).
 - **[Mainnet](https://gno.land)** (`gnoland-1`,
   `https://rpc.gno.land:443`) has been live since 12 September 2026. Real
   GNOT, no faucet.
-
-See [Gno networks](https://docs.gno.land/resources/gnoland-networks) for the
-full list.
 
 ## Next Steps
 
