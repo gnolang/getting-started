@@ -34,6 +34,9 @@ for `v*` release tags and `gnolang/gno` only publishes `chain/*` tags, so
 
 4. Open your browser and visit http://localhost:8888
 
+Edit `hello.gno` while `make dev` runs and the page reloads with your change.
+Run `make` at any point to see every available target.
+
 ## What's Included
 
 This repository contains a simple Gno realm with:
@@ -41,18 +44,42 @@ This repository contains a simple Gno realm with:
 - A `Set` function to update the realm's state
 - A `Get` function to retrieve the stored message
 
+## Testing it
+
+        make test    # run the tests
+        make lint    # catch what only the chain would otherwise catch
+        make fmt     # format every .gno file in place
+
+`hello_test.gno` shows the two tests every realm wants: one that exercises the
+state-changing function (note the `cur realm` parameter and the `cross(cur)`
+call — that's how Gno marks a "crossing" call into a realm), and one that calls
+`Render`, which is the realm's entire public surface.
+
 ## Deploying it
 
-`gnodev` runs a throwaway local chain. When you want your realm on a real
-network:
+`gnodev` runs a throwaway local chain. To put your realm on a real network you
+need a key, a namespace, and a network:
 
-- **A testnet** — start here. Testnets are renamed and replaced every few
-  weeks, so look up the current one and its RPC endpoint in
-  [Gno networks](https://docs.gno.land/resources/gnoland-networks), and get
-  tokens from the [faucet](https://faucet.gno.land).
-- **[Mainnet](https://gno.land)** (`gnoland-1`,
-  `https://rpc.gno.land:443`) has been live since 12 September 2026. Real
-  GNOT, no faucet.
+1. **A key with funds.**
+
+        gnokey add mykey
+
+   On a testnet, fund it from the [faucet](https://faucet.gno.land). Mainnet has
+   no faucet — it costs real GNOT.
+
+2. **A namespace you control.** Edit `module` in `gnomod.toml` to
+   `gno.land/r/<your-address>/hello`. Deploying under your own address always
+   works and needs no registration; a short name has to be registered first.
+
+3. **A network.** Look up its RPC endpoint and chain id in
+   [Gno networks](https://docs.gno.land/resources/gnoland-networks). Testnets
+   are renamed and replaced every few weeks, so check the page rather than
+   trusting a name you saw somewhere. [Mainnet](https://gno.land) has been live
+   since 12 September 2026 at `https://rpc.gno.land:443`, chain id `gnoland-1`.
+
+Then:
+
+        make deploy KEY=mykey REMOTE=<rpc-url> CHAINID=<chain-id>
 
 ## Next Steps
 
@@ -60,4 +87,9 @@ Ready to learn more? Check out these resources:
 
 - Gno Documentation: https://docs.gno.land
 - Gno Repository Template: https://github.com/gnolang/repo-template
+- Real-world packages and realms to read and copy from:
+  https://github.com/moul/gno-contracts — 50+ versioned, self-contained
+  contracts, each with a README and tests, continuously built against gno
+  master. A good look at what a serious Gno repository grows into.
+- Everything else Gno: https://github.com/gnoverse/awesome-gno
 <!--- Gno by Examples: https://github.com/gnolang/by-examples-->
