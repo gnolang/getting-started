@@ -1,6 +1,7 @@
 # getting-started — run `make` (or `make help`) to see every target.
 
 GNO ?= gno
+GNODEV ?= gnodev
 
 .DEFAULT_GOAL := help
 .PHONY: help install dev test lint fmt
@@ -16,7 +17,7 @@ install: ## build the gno toolchain into $HOME/.gno/bin
 	@echo '   export PATH="$$HOME/.gno/bin:$$PATH"'
 
 dev: ## run a local chain + web UI on http://localhost:8888, reloading on save
-	gnodev .
+	$(GNODEV) .
 
 test: ## run the tests
 	$(GNO) test .

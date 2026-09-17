@@ -20,34 +20,33 @@ make lint     # gno lint .
 make fmt      # gno fmt -w .
 ```
 
-`make test lint` is the bar for any change. CI runs exactly those two targets
-against a gno built from `gnolang/gno` master, so a green local run means a
-green CI.
+`make test lint` is the bar for any change. CI runs those two targets against a
+`gno` built from `gnolang/gno` master, while yours is whatever you installed
+last — re-run `make install` before trusting a green local run.
+
+## Gno is not Go
+
+Close enough that Go habits compile in your head and fail on the chain. Read,
+do not guess:
+
+- [Realms](https://docs.gno.land/resources/realms) — `Render` and realm state
+- [Interrealm](https://docs.gno.land/resources/gno-interrealm) — crossing
+  functions, the `realm` parameter, `cross(...)`
+- [Go/Gno compatibility](https://docs.gno.land/resources/go-gno-compatibility) —
+  what the language keeps, drops and adds
+- [Standard libraries](https://docs.gno.land/resources/gno-stdlibs) — the subset
+  that exists, and `chain/*` in place of Go's runtime packages
+- [Testing](https://docs.gno.land/resources/gno-testing) — including why an
+  `Example*` function needs an `// Output:` block
+- [Effective Gno](https://docs.gno.land/resources/effective-gno) — idioms worth
+  copying
 
 ## Tooling worth having
 
 - [`gnoverse/gno-mcp`](https://github.com/gnoverse/gno-mcp) — MCP server plus
   agent skills for gno.land: read and render realms, evaluate expressions,
-  deploy to a testnet, audit a realm. Its `gno` skill is the knowledge layer
-  this file is deliberately too small to be. Pre-release; writes are gated to
+  deploy to a testnet, audit a realm. Pre-release; writes are gated to
   dev/testnet.
 - [`gnoverse/gnopls`](https://github.com/gnoverse/gnopls) — the Gno language
-  server, for editors. Experimental; setup in
+  server, for editors. Setup in
   [Editor Setup](https://docs.gno.land/builders/editor-setup).
-
-## Gno is not quite Go
-
-Close enough that Go habits compile in your head and fail on the chain:
-
-- **State-mutating exported functions are "crossing" functions**: they take a
-  first parameter `cur realm`, and callers use `cross(cur)`. See `Set` in
-  `hello.gno` and its call in `hello_test.gno`.
-- **`Render(path string) string` is the realm's whole public surface.** gnoweb
-  calls it for every page view. Always keep a test that calls it.
-- **`Example*` tests need an `// Output:` block** or `gno test` skips them
-  silently — an example without one asserts nothing.
-- **Render must be deterministic.** Map iteration order is unspecified, so never
-  build output by ranging a map.
-- **The standard library is a subset.** `sort.Slice` does not exist, and `ufmt`
-  honours only some of `fmt`'s flags: `ufmt.Sprintf("%03d", 7)` returns `"7"`,
-  and `%-5s` comes back as `(unhandled verb: %-)`.
