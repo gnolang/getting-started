@@ -13,7 +13,7 @@ Try it out with gnokey:
 	gnokey add myaccount
 	gnokey list
 
-[And click here](/r/demo/hello$help&func=Set&newMsg=Hello%20from%20Gnokey!)
+[And click here](/r/example/hello$help&func=Set&newMsg=Hello%20from%20Gnokey!)
 	`
 }
 

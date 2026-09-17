@@ -18,13 +18,21 @@ check out the "Next Steps" section below for links to more advanced resources.
 
         make install
 
-This will check if Go is installed and install the required Gno tools.
+This clones `gnolang/gno` and builds `gno`, `gnokey`, `gnodev`, `gnobro` and
+`gnoweb` into `$HOME/.gno/bin`. It needs Go, git and make, and takes a few
+minutes the first time. Add the directory to your `PATH` before continuing:
+
+        export PATH="$HOME/.gno/bin:$PATH"
+
+(The installer also has a faster prebuilt-binary mode, but it currently looks
+for `v*` release tags and `gnolang/gno` only publishes `chain/*` tags, so
+`--from-source` is the path that works today.)
 
 3. Start the development server:
 
         make dev
 
-4. Open your browser and visit https://localhost:8888
+4. Open your browser and visit http://localhost:8888
 
 ## What's Included
 
@@ -32,6 +40,19 @@ This repository contains a simple Gno realm with:
 - A `Render` function that displays a welcome message and instructions
 - A `Set` function to update the realm's state
 - A `Get` function to retrieve the stored message
+
+## Deploying it
+
+`gnodev` runs a throwaway local chain. When you want your realm on a real
+network:
+
+- **A testnet** — start here. Testnets are renamed and replaced every few
+  weeks, so look up the current one and its RPC endpoint in
+  [Gno networks](https://docs.gno.land/resources/gnoland-networks), and get
+  tokens from the [faucet](https://faucet.gno.land).
+- **[Mainnet](https://gno.land)** (`gnoland-1`,
+  `https://rpc.gno.land:443`) has been live since 12 September 2026. Real
+  GNOT, no faucet.
 
 ## Next Steps
 

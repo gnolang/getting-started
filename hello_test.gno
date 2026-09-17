@@ -4,14 +4,14 @@ import (
 	"testing"
 )
 
-func TestSetAndGet(t *testing.T) {
+func TestSetAndGet(cur realm, t *testing.T) {
 	// Test initial state
 	if got := Get(); got != "Hello, Gno!" {
 		t.Errorf("Expected default message, got %s", got)
 	}
 
 	// Test setting a new message
-	Set(cross, "Hello, Test!")
+	Set(cross(cur), "Hello, Test!")
 	if got := Get(); got != "Hello, Test!" {
 		t.Errorf("Expected 'Hello, Test!', got %s", got)
 	}
