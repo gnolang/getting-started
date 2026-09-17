@@ -69,6 +69,12 @@ command for every network.
 Ready to learn more? Check out these resources:
 
 - Gno Documentation: https://docs.gno.land
+- Editor setup, with the `gnopls` language server:
+  https://docs.gno.land/builders/editor-setup —
+  https://github.com/gnoverse/gnopls
+- Put your AI agent on gno.land: https://github.com/gnoverse/gno-mcp — an MCP
+  server plus skills that let an agent read realms, deploy to a testnet and
+  audit on-chain code. Pre-release.
 - The realms and packages that ship with the chain:
   https://github.com/gnolang/gno/tree/master/examples — the standard library of
   Gno, from `r/gnoland/home` to the `p/demo` packages everything else builds on.

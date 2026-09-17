@@ -24,6 +24,17 @@ make fmt      # gno fmt -w .
 against a gno built from `gnolang/gno` master, so a green local run means a
 green CI.
 
+## Tooling worth having
+
+- [`gnoverse/gno-mcp`](https://github.com/gnoverse/gno-mcp) — MCP server plus
+  agent skills for gno.land: read and render realms, evaluate expressions,
+  deploy to a testnet, audit a realm. Its `gno` skill is the knowledge layer
+  this file is deliberately too small to be. Pre-release; writes are gated to
+  dev/testnet.
+- [`gnoverse/gnopls`](https://github.com/gnoverse/gnopls) — the Gno language
+  server, for editors. Experimental; setup in
+  [Editor Setup](https://docs.gno.land/builders/editor-setup).
+
 ## Gno is not quite Go
 
 Close enough that Go habits compile in your head and fail on the chain:
@@ -38,3 +49,5 @@ Close enough that Go habits compile in your head and fail on the chain:
 - **Render must be deterministic.** Map iteration order is unspecified, so never
   build output by ranging a map.
 - **The standard library is a subset.** `sort.Slice` does not exist, and `ufmt`
+  honours only some of `fmt`'s flags: `ufmt.Sprintf("%03d", 7)` returns `"7"`,
+  and `%-5s` comes back as `(unhandled verb: %-)`.
