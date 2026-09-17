@@ -7,14 +7,11 @@ var message string = "Hello, Gno!"
 func Render(path string) string {
 	return `# ` + message + `
 
-This is a simple Gno realm that demonstrates basic functionality.
-Try it out with gnokey:
+This page is what Render returns. Edit hello.gno while "make dev" is running
+and it reloads with your change.
 
-	gnokey add myaccount
-	gnokey list
-
-[And click here](/r/example/hello$help&func=Set&newMsg=Hello%20from%20Gnokey!)
-	`
+Add $help to this page's URL to call Set from your browser.
+`
 }
 
 func Set(_ realm, newMsg string) {
