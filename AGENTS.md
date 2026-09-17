@@ -38,12 +38,3 @@ Close enough that Go habits compile in your head and fail on the chain:
 - **Render must be deterministic.** Map iteration order is unspecified, so never
   build output by ranging a map.
 - **The standard library is a subset.** `sort.Slice` does not exist, and `ufmt`
-  supports no width or padding flags (`ufmt.Sprintf("%03d", 7)` returns `"7"`).
-
-## Conventions
-
-- Conventional single-line commits: `feat: …`, `fix: …`, `chore: …`.
-- No AI co-author trailers.
-- Don't add folders, CI jobs, or dependencies. Simplicity is the feature; if
-  something needs more machinery, it belongs in a bigger repo such as
-  [moul/gno-contracts](https://github.com/moul/gno-contracts), not here.
