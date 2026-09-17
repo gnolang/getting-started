@@ -1,2 +1,0 @@
-# Gno is Go — give .gno files Go syntax highlighting, diffs and language stats.
-*.gno linguist-language=Go
