@@ -18,14 +18,15 @@ check out the "Next Steps" section below for links to more advanced resources.
 
         make install
 
-This downloads prebuilt `gno`, `gnokey`, `gnodev`, `gnobro` and `gnoweb`
-binaries into `$HOME/.gno/bin`. Add that directory to your `PATH` before
-continuing:
+This clones `gnolang/gno` and builds `gno`, `gnokey`, `gnodev`, `gnobro` and
+`gnoweb` into `$HOME/.gno/bin`. It needs Go, git and make, and takes a few
+minutes the first time. Add the directory to your `PATH` before continuing:
 
         export PATH="$HOME/.gno/bin:$PATH"
 
-(Pass `--from-source` to the installer instead if you'd rather build from
-source; that path needs Go, git and make.)
+(The installer also has a faster prebuilt-binary mode, but it currently looks
+for `v*` release tags and `gnolang/gno` only publishes `chain/*` tags, so
+`--from-source` is the path that works today.)
 
 3. Start the development server:
 

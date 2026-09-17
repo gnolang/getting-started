@@ -11,10 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
       - name: Install Gno
         run: |
           curl --proto '=https' --tlsv1.2 -sSf \
-            https://raw.githubusercontent.com/gnolang/gno/master/misc/install.sh | sh
+            https://raw.githubusercontent.com/gnolang/gno/master/misc/install.sh \
+            | sh -s -- --from-source
           echo "$HOME/.gno/bin" >> "$GITHUB_PATH"
 
       - name: Test
