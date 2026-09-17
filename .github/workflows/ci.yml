@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Gno
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf \
+            https://raw.githubusercontent.com/gnolang/gno/master/misc/install.sh | sh
+          echo "$HOME/.gno/bin" >> "$GITHUB_PATH"
+
+      - name: Test
+        run: gno test .
+
+      - name: Lint
+        run: gno lint .
